@@ -20,6 +20,14 @@ module.exports = {
           ...webpackConfig.optimization,
           runtimeChunk: false,
         },
+        // Add the buffer fallback here
+        resolve: {
+          ...webpackConfig.resolve,
+          fallback: {
+            ...webpackConfig.resolve.fallback,
+            buffer: require.resolve('buffer/')
+          },
+        },
       };
     },
   },
